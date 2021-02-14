@@ -1,4 +1,51 @@
-<<<<<<< HEAD
+const getRandomIntFromRange = function(min, max) {
+  if (min<0) {
+    console.log('Поменяйте первый параметр');
+    return -1;
+  }
+
+  if (max<0) {
+    console.log('Поменяйте второй параметр');
+    return -1;
+  }
+
+  if (max<min) {
+    console.log('Так как max должно быть больше min, поменяйте их местами');
+    return -1;
+  }
+
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+
+
+function getRandomFloat(minf, maxf, n) {
+  if (minf<0) {
+    console.log('Поменяйте первый параметр');
+    return -1;
+  }
+
+  if (maxf<0) {
+    console.log('Поменяйте второй параметр');
+    return -1;
+  }
+
+  if (maxf<minf) {
+    console.log('Так как max должно быть больше min, поменяйте их местами');
+    return -1;
+  }
+
+  if (n<0) {
+    console.log('Поменяйте третий параметр');
+    return -1;
+  }
+
+  return (Math.random() * (maxf - minf) + minf).toFixed(n);
+};
+
+
 const TITLES = [
   'title-1',
   'title-2',
@@ -38,6 +85,10 @@ const FEATURES = [
   'conditioner'
 ];
 
+const ROOMS = [1, 2, 3, 4, 5];
+
+const GUESTS = [5, 10, 15, 20, 25, 30];
+
 const PHOTOS = [
     'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
     'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
@@ -47,90 +98,67 @@ const PHOTOS = [
 const min = 1;
 const max = 1000000;
 
+const AVATARS = [1, 2, 3, 4, 5, 6, 7, 8];
 
-/*выбор числа, включая значения */
-const getRandomNumber = function(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+DESCRIPTIONS = [
+  'description-1',
+  'description-2',
+  'description-3',
+  'description-4',
+  'description-5',
+  'description-6',
+  'description-7',
+  'description-8'
+];
+
 
 /*выбор из массива*/
 
-const getRandomArrayElement = (elements) => {
-  return elements[_.random(0, elements.length - 1)];
+const getRandomArrayElement = function (arr) {
+  return arr[Math.floor(Math.random() * arr.lenght)]
 };
 
-var FinalAd = [];
+/*случайная длина*/
 
+const getRandomLenght = function (arr) {
+  let lenghtArray = Math.floor(Math.random() * arr.lenght);
+  let newArray = [];
 
-FinalAd.push({
-  return {
-    author: {
-      avatar
-    },
-    offer: {
-      title: getRandomArrayElement(TITLES),
-      address:,
-      price: getRandomNumber(min,max),
-      type: getRandomArrayElement(TYPES),
-      rooms: getRandomNumber(min,max),
-      guests: getRandomNumber(min,max),
-      checkin: getRandomArrayElement(CHEKIN),
-      checkout: getRandomArrayElement(CHEKOUT),
-      features:,
-      description:,
-      photos:
-    },
-    location:{}
+  for(let i=0; i<lenghtArray; i = i + 1) {
+    newArray.push(arr[i]);
   }
-)};
-=======
-function getRandomIntFromRange(min, max) {
+  return newArray;
+};
 
-  if (min<0) {
-    console.log('Поменяйте первый параметр');
-    return -1;
+
+const createAds = function (number) {
+  let finalAds = [];
+
+  for (let i = 0; i<number; i = i + 1) {
+    let locationX = getRandomFloat(35.65000, 35.70000, 2);
+    let locationY = getRandomFloat(139.70000, 139.80000, 2);
+    finalAds.push ({
+      author: {
+        avatar: 'img/avatars/user0' + getRandomArrayElement(AVATARS) + '.png'
+      },
+      offer: {
+        title: getRandomArrayElement(TITLES),
+        address: location.x + ',' + location.y,
+        price: getRandomIntFromRange(min, max),
+        type: getRandomArrayElement(TYPES),
+        rooms: getRandomArrayElement(ROOMS),
+        guests: getRandomArrayElement(GUESTS),
+        checkin: getRandomArrayElement(CHEKIN),
+        checkout: getRandomArrayElement(CHEKOUT),
+        features: getRandomLenghtI(FEATURES),
+        description: getRandomArrayElement(DESCRIPTIONS),
+        photos: getRandomLenght(PHOTOS)
+      },
+      location:{
+        x: locationX,
+        y: locationY
+      }
+    });
   }
-
-  if (max<0) {
-    console.log('Поменяйте второй параметр');
-    return -1;
-  }
-
-  if (max<min) {
-    console.log('Так как max должно быть больше min, поменяйте их местами');
-    return -1;
-  }
-
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-console.log(getRandomIntFromRange(5, 10));
-
-
-function getRandomFloat(min, max, n) {
-  if (min<0) {
-    console.log('Поменяйте первый параметр');
-    return -1;
-  }
-
-  if (max<0) {
-    console.log('Поменяйте второй параметр');
-    return -1;
-  }
-
-  if (max<min) {
-    console.log('Так как max должно быть больше min, поменяйте их местами');
-    return -1;
-  }
-
-  if (n<0) {
-    console.log('Поменяйте третий параметр');
-    return -1;
-  }
-
-  return (Math.random() * (max - min) + min).toFixed(n);
-}
-
-console.log(getRandomFloat(11, 101, 3));
->>>>>>> master
+  return finalAds;
+};
