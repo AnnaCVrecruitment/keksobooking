@@ -1,36 +1,38 @@
-const getRandomIntFromRange = function(Min, Max) {
-  if (Min < 0) {
+'use strict';
+
+const getRandomIntFromRange = function(min, max) {
+  if (min < 0) {
     console.log('Поменяйте первый параметр');
     return -1;
   }
 
-  if (Max<0) {
+  if (max<0) {
     console.log('Поменяйте второй параметр');
     return -1;
   }
 
-  if (Max<Min) {
-    console.log('Так как Max должно быть больше Min, поменяйте их местами');
+  if (max<min) {
+    console.log('Так как max должно быть больше Min, поменяйте их местами');
     return -1;
   }
 
-  Min = Math.ceil(Min);
-  Max = Math.floor(Max);
-  return Math.floor(Math.random() * (Max - Min + 1)) + Min;
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-function getRandomFloat(Minf, Maxf, n) {
-  if (Minf<0) {
+function getRandomFloat(minf, maxf, n) {
+  if (minf<0) {
     console.log('Поменяйте первый параметр');
     return -1;
   }
 
-  if (Maxf<0) {
+  if (maxf<0) {
     console.log('Поменяйте второй параметр');
     return -1;
   }
 
-  if (Maxf<Minf) {
+  if (maxf<minf) {
     console.log('Так как Max должно быть больше Min, поменяйте их местами');
     return -1;
   }
@@ -40,13 +42,13 @@ function getRandomFloat(Minf, Maxf, n) {
     return -1;
   }
 
-  return (Math.random() * (Maxf - Minf) + Minf).toFixed(n);
+  return (Math.random() * (maxf - minf) + minf).toFixed(n);
 };
 
-const Min = 1;
-const Max = 1000000;
-const MaxRooms = 10;
-const MaxGuests = 30;
+const MIN = 1;
+const MAX = 1000000;
+const MAX_ROOMS = 10;
+const MAX_GUESTS = 30;
 
 const TYPES = [
   'palace',
@@ -90,7 +92,7 @@ const getRandomArrayElement = function (arr) {
 
 /*случайная длина*/
 
-const getRandomLenght = function (arr) {
+const getRandomLength = function (arr) {
   let lengthArray = Math.floor(Math.random() * arr.length);
   let newArray = [];
 
@@ -112,7 +114,7 @@ const createAds = function (number) {
       },
       offer: {
         title: 'title-'+ [i+1],
-        address: locationX + ',' + locationY,
+        address: locationX + ', ' + locationY,
         price: getRandomIntFromRange(Min, Max),
         type: getRandomArrayElement(TYPES),
         rooms: getRandomIntFromRange(Min, MaxRooms),
