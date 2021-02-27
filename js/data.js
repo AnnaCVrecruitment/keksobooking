@@ -9,19 +9,19 @@ const TYPES = [
   'palace',
   'flat',
   'house',
-  'bungalow'
+  'bungalow',
 ];
 
 const CHEKIN = [
   '12:00',
   '13:00',
-  '14:00'
+  '14:00',
 ];
 
 const CHEKOUT = [
   '12:00',
   '13:00',
-  '14:00'
+  '14:00',
 ];
 
 const FEATURES = [
@@ -30,16 +30,14 @@ const FEATURES = [
   'parking',
   'washer',
   'elevator',
-  'conditioner'
+  'conditioner',
 ];
 
 const PHOTOS = [
-    'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
-    'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
-    'http://o0.github.io/assets/images/tokyo/hotel3.jpg'
+  'http://o0.github.io/assets/images/tokyo/hotel1.jpg',
+  'http://o0.github.io/assets/images/tokyo/hotel2.jpg',
+  'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
 ];
-
-
 
 const createAds = function (number) {
   let finalAds = [];
@@ -49,7 +47,7 @@ const createAds = function (number) {
     let locationY = getRandomFloat(139.70000, 139.80000, 2);
     finalAds.push ({
       author: {
-        avatar: 'img/avatars/user0' + [i+1] + '.png'
+        avatar: 'img/avatars/user0' + [i+1] + '.png',
       },
       offer: {
         title: 'title-'+ [i+1],
@@ -62,13 +60,15 @@ const createAds = function (number) {
         checkout: getRandomArrayElement(CHEKOUT),
         features: getRandomLength(FEATURES),
         description: 'description-'+ [i+1],
-        photos: getRandomLength(PHOTOS)
+        photos: getRandomLength(PHOTOS),
       },
       location:{
         x: locationX,
-        y: locationY
-      }
+        y: locationY,
+      },
     });
   }
   return finalAds;
 };
+
+createAds(10);

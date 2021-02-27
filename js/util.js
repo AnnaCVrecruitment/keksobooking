@@ -1,16 +1,16 @@
 const getRandomIntFromRange = function(min, max) {
   if (min < 0) {
-    console.log('Поменяйте первый параметр');
+    alert('Поменяйте первый параметр');
     return -1;
   }
 
   if (max<0) {
-    console.log('Поменяйте второй параметр');
+    alert('Поменяйте второй параметр');
     return -1;
   }
 
   if (max<min) {
-    console.log('Так как max должно быть больше Min, поменяйте их местами');
+    alert('Так как max должно быть больше Min, поменяйте их местами');
     return -1;
   }
 
@@ -21,27 +21,27 @@ const getRandomIntFromRange = function(min, max) {
 
 function getRandomFloat(minf, maxf, n) {
   if (minf<0) {
-    console.log('Поменяйте первый параметр');
+    alert('Поменяйте первый параметр');
     return -1;
   }
 
   if (maxf<0) {
-    console.log('Поменяйте второй параметр');
+    alert('Поменяйте второй параметр');
     return -1;
   }
 
   if (maxf<minf) {
-    console.log('Так как Max должно быть больше Min, поменяйте их местами');
+    alert('Так как Max должно быть больше Min, поменяйте их местами');
     return -1;
   }
 
   if (n<0) {
-    console.log('Поменяйте третий параметр');
+    alert('Поменяйте третий параметр');
     return -1;
   }
 
   return (Math.random() * (maxf - minf) + minf).toFixed(n);
-};
+}
 
 /*выбор из массива*/
 
@@ -60,7 +60,6 @@ const getRandomLength = function (arr) {
   }
   return newArray;
 };
-
 
 export {getRandomIntFromRange, getRandomFloat, getRandomArrayElement, getRandomLength};
 
