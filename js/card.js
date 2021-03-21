@@ -1,5 +1,9 @@
-const map = document.querySelector('.map');
-const TYPE_CARD = {
+import {createAds} from './data.js';
+
+const offers = createAds(10);
+
+const mapCanvas = document.querySelector('.map-canvas');
+const typeCard = {
   flat: 'Квартира',
   bungalo: 'Бунгало',
   house: 'Дом',
@@ -8,9 +12,8 @@ const TYPE_CARD = {
 
 const similarAdTemplate = document.querySelector('#card')
   .content
-  .querySelector('.popup.map__card');
+  .querySelector('.popup');
 
-const similarAdElement = similarAdTemplate.cloneNode(true);
 
 const photoTemplate = document.querySelector('#card')
   .content
@@ -41,16 +44,21 @@ const pasteFeatures = function (element, array) {
 
 
 const createSimilarAdvert = function(card) {
+  const similarAdElement = similarAdTemplate.cloneNode(true);
+
   similarAdElement.querySelector('.popup__title').textContent = card.offer.title;
   similarAdElement.querySelector('.popup__text--address').textContent = card.offer.address;
   similarAdElement.querySelector('.popup__text--price').textContent = card.offer.price + ' ₽/ночь';
-  similarAdElement.querySelector('.popup__type').textContent = TYPE_CARD[card.offer.type];
+  similarAdElement.querySelector('.popup__type').textContent = typeCard[card.offer.type];
   similarAdElement.querySelector('.popup__text--capacity').textContent = card.offer.rooms + ' комнаты для ' + card.offer.guests + ' гостей';
   similarAdElement.querySelector('.popup__text--time').textContent = 'Заезд после ' + card.offer.checkin + ', выезд до ' + card.offer.checkout;
   pasteFeatures(similarAdElement.querySelector('.popup__features'),card.offer.features)
   similarAdElement.querySelector('.popup__description').textContent = card.offer.description;
   pastePhotos(similarAdElement.querySelector('.popup__photos'),card.offer.photos);
   similarAdElement.querySelector('.popup__avatar').src = card.author.avatar;
+
+  mapCanvas.appendChild(similarAdElement);
 }
 
-similarAdTemplate.appendChild(similarAdElement);
+createSimilarAdvert(offers[0]);
+

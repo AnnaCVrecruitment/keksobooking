@@ -72,3 +72,5 @@ const createAds = function (number) {
 };
 
 createAds(10);
+
+export {createAds};
