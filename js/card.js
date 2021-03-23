@@ -2,7 +2,7 @@ import {createAds} from './data.js';
 
 const offers = createAds(10);
 
-const mapCanvas = document.querySelector('.map-canvas');
+const mapCanvas = document.querySelector('#map-canvas');
 const typeCard = {
   flat: 'Квартира',
   bungalo: 'Бунгало',
